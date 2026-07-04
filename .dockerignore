@@ -1,7 +1,11 @@
 node_modules
 .expo
 dist
-server
 .git
+.gitignore
 .vscode
+.env
+.env.*
+!.env.example
 *.md
+*.log

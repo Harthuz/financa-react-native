@@ -15,18 +15,31 @@ services:
       interval: 5s
       timeout: 5s
       retries: 10
+    networks:
+      - finance-net
 
   api:
-    build: ./server
+    build:
+      context: ./server
+      dockerfile: Dockerfile
     restart: unless-stopped
     environment:
       DATABASE_URL: postgres://${POSTGRES_USER:-finance}:${POSTGRES_PASSWORD:-finance}@db:5432/${POSTGRES_DB:-finance}
       PORT: 3001
+      NODE_ENV: production
     ports:
       - "3001:3001"
     depends_on:
       db:
         condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:3001/api/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    networks:
+      - finance-net
 
   web:
     build:
@@ -36,7 +49,20 @@ services:
     ports:
       - "8080:80"
     depends_on:
-      - api
+      api:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:80 || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+    networks:
+      - finance-net
 
 volumes:
   pgdata:
+
+networks:
+  finance-net:
+    driver: bridge

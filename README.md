@@ -86,7 +86,7 @@ finance/
 ## 🚀 Como Executar
 
 ### Pré-requisitos
-- [Node.js 18+](https://nodejs.org/)
+- [Node.js 20+](https://nodejs.org/)
 - [Docker e Docker Compose](https://www.docker.com/) *(para o banco e API)*
 
 ---
@@ -119,7 +119,7 @@ POSTGRES_DB=finance
 ### 3. Subir o banco de dados e a API
 
 ```bash
-docker-compose up db api -d
+docker compose up db api -d
 ```
 
 Isso inicializa o PostgreSQL e a API REST na porta `3001`.
@@ -145,7 +145,7 @@ npm start
 Para rodar o stack completo (banco + API + app web via Nginx):
 
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 | Serviço | URL |
@@ -179,7 +179,7 @@ Base URL: `http://localhost:3001`
 O arquivo [`src/financeEngine/engine.ts`](src/financeEngine/engine.ts) contém a **lógica pura** de cálculo, sem dependências de UI ou banco.
 
 **Como funciona:**
-- Parte da data atual (`new Date()`) para o mês 0
+- Parte da data atual (`new Date()`) — mês 1 da projeção = mês corrente
 - Itera mês a mês por `N` meses (padrão: 24)
 - Cada mês calcula:
   - Dívidas ainda ativas (`remainingInstallments >= i`)
@@ -209,4 +209,3 @@ O modo ativo é detectado automaticamente no boot do app.
 ## 📄 Licença
 
 Consulte o arquivo [LICENSE](LICENSE).
-"# financa-react-native" 
