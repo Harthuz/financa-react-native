@@ -1,0 +1,43 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/*
+  Paleta monocromática (preto e branco).
+  Cor só existe em --color-emerald (valores positivos) e --color-rose (valores negativos).
+  Os valores são tripletas RGB ("R G B") para permitir modificadores de opacidade
+  do Tailwind (ex.: bg-teal-600/20) — use rgb(var(--token)) em CSS puro.
+*/
+:root {
+  --color-bg: 255 255 255; /* Fundo branco puro */
+  --color-card: 250 250 250; /* Fundo de cards */
+  --color-border: 229 229 229; /* Bordas */
+  --color-border-light: 239 239 239; /* Bordas suaves / superfícies elevadas */
+  --color-text: 17 17 17; /* Texto principal (quase preto) */
+  --color-text-sec: 89 89 89; /* Texto secundário */
+  --color-accent: 17 17 17; /* Botões primários: preto */
+  --color-on-accent: 255 255 255; /* Texto sobre botões primários */
+  --color-emerald: 21 128 61; /* Verde: saldo/valores positivos */
+  --color-rose: 185 28 28; /* Vermelho: saldo/valores negativos */
+}
+
+.dark {
+  --color-bg: 10 10 10; /* Fundo quase preto */
+  --color-card: 22 22 22; /* Fundo de cards */
+  --color-border: 42 42 42; /* Bordas */
+  --color-border-light: 51 51 51; /* Bordas suaves / superfícies elevadas */
+  --color-text: 245 245 245; /* Texto principal (quase branco) */
+  --color-text-sec: 158 158 158; /* Texto secundário */
+  --color-accent: 245 245 245; /* Botões primários: branco */
+  --color-on-accent: 10 10 10; /* Texto sobre botões primários */
+  --color-emerald: 34 197 94; /* Verde: saldo/valores positivos */
+  --color-rose: 239 68 68; /* Vermelho: saldo/valores negativos */
+}
+
+html, body {
+  overflow-y: auto !important;
+  height: 100% !important;
+  background-color: rgb(var(--color-bg)) !important;
+  color: rgb(var(--color-text)) !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}

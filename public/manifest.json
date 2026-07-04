@@ -1,0 +1,22 @@
+{
+  "short_name": "Finanças Pro",
+  "name": "Finanças Pro - Controle Financeiro Pessoal",
+  "description": "Substitua suas planilhas de gastos e dívidas por projeções automáticas.",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#0A0A0A",
+  "background_color": "#0A0A0A"
+}
